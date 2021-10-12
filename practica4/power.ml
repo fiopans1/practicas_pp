@@ -11,3 +11,10 @@ let power' x y=
 	let n=y/2 in
 	if (y mod 2)= 0 then ((par x) n) else ((impar x) n);;
 	
+
+let rec parf x z=if z=0 then 1. else (x*.x)*.((parf x) (z-1));;
+let rec imparf x z= if z=0 then 1. else x*.(x*.x)*.((imparf x) (z-1));;
+
+let powerf x y= 
+	let n=y/2 in
+	if (y mod 2)= 0 then ((parf x) n) else ((imparf x) n);;
