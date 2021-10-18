@@ -92,10 +92,30 @@ let rec conca l1 l2= match l1 with
 
 let concat l= conca l [];;
 (**************************************************************)
-
-
-
-
+let flatten= concat l;;
+(**************************************************************)
+let rec ma f l l1= match l with
+  []->l1
+  | h::t -> ma f t (append l1 [(f h)]);;
+let map f l= ma f l [];;
+(**************************************************************)
+let rev_map f l= map f (rev l);;
+(**************************************************************)
+let rec ma1 f l1 l2 l3= match l1,l2 with
+  [],[]->l3
+  | h::t,h1::t1-> ma1 f t t1 (append  l3 [(f h h1)]);;
+let map2 f l1 l2=
+  if((length l1)= (length l2)) then (ma1 f l1 l2 []) else  raise(Failure "map2");;
+(**************************************************************)
+let rec fol f l z= match l with
+  []->z
+  | h::t-> fol f t (f z h);;
+let fold_left f l=match l with
+  []->raise(Failure "fold_left")
+  | h::t-> fol f t h;;
+(**************************************************************)
+let fold_right f l=fold_left f (rev l);;
+(*preguntar que hacen y terminar fold_left y fold_right*)
 
 
 
