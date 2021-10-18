@@ -63,3 +63,43 @@ let rec parti f l l1 l2= match l with
 let partition f l= match l with
   []->raise(Failure "partition")
   | h::t-> parti f l [] [];;
+(**************************************************************)
+let rec spl l l1 l2= match l with
+  []->(l1,l2)
+  | h::t-> spl t (append l1 [fst(h)]) (append l2 [snd(h)]);;
+let split l= spl l [] [];;
+(**************************************************************)
+let rec combi l1 l2 l3= match l1,l2 with
+  [],[]->l3
+  | h::t,h1::t1-> combi t t1 (append l3 [(h,h1)]);;
+let combine l1 l2= 
+  if((length l1)=(length l2)) then (combi l1 l2 []) else raise(Failure "combine");;
+(**************************************************************)
+let rec ini f n p l1=
+  if(p<n) then ini f n (p+1) (append l1 [(f p)]) else  l1;;  
+let init n f= ini f n 0 [];; 
+(**************************************************************)
+let rec re l l1= match l with
+  []->l1
+  | h::t->re t (append [h] l1);;
+let rev l= re l [];;
+(**************************************************************)
+let rev_append l1 l2= append (rev l1) l2;;
+(**************************************************************)
+let rec conca l1 l2= match l1 with
+  []->l2
+  | h::t->conca t (append l2 h);;
+
+let concat l= conca l [];;
+(**************************************************************)
+
+
+
+
+
+
+
+
+
+
+
