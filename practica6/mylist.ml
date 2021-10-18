@@ -59,7 +59,7 @@ let find_all f l= filter f l;;
 (**************************************************************)
 let rec parti f l l1 l2= match l with
   []->(l1,l2)
-  | h::t-> if(f h) then (parti f t (append [h] l1) l2) else (parti f t l1 (append [h] l2));;
+  | h::t-> if(f h) then (parti f t (append l1 [h]) l2) else (parti f t l1 (append l2 [h]));;
 let partition f l= match l with
   []->raise(Failure "partition")
   | h::t-> parti f l [] [];;
