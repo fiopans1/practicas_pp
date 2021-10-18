@@ -45,8 +45,8 @@ let for_all f l= match l with
 let rec exists f l= match l with
     []->false
     | h::t-> if(f h) then true else (exists f t);;
-(**************************************************************)
-let rec mem n l= match l with
+(**************************************************[*]***********)
+let rec mem n l= match [l] with
   []->false
   | h::t->if(h=n) then true else (mem n t);;
 (**************************************************************)
@@ -59,7 +59,7 @@ let find_all f l= filter f l;;
 (**************************************************************)
 let rec parti f l l1 l2= match l with
   []->(l1,l2)
-  | h::t-> if(f h) then (parti f t (append h l1) l2) else (parti f t l1 (append h l2));;
+  | h::t-> if(f h) then (parti f t (append [h] l1) l2) else (parti f t l1 (append [h] l2));;
 let partition f l= match l with
   []->raise(Failure "partition")
   | h::t-> parti f l [] [];;
