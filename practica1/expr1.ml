@@ -55,7 +55,7 @@ ceil 2.1 +. ceil(-2.9);;
 (*da error de sintaxis porque al segundo ceil le faltan los paréntesis al numero negativo*)
 
 2.0 ** 3.0 ** 2.0;;
-(*pensé que iba a dar float=144, pero nose por qué da float = 512*)
+(*float = 512*)
 
 'B';;
 (*char = 'B'*)
