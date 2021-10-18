@@ -46,7 +46,7 @@ let rec exists f l= match l with
     []->false
     | h::t-> if(f h) then true else (exists f t);;
 (**************************************************[*]***********)
-let rec mem n l= match [l] with
+let rec mem n l= match l with
   []->false
   | h::t->if(h=n) then true else (mem n t);;
 (**************************************************************)
