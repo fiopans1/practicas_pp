@@ -20,7 +20,7 @@ let rec remove n l= match l with
       | h::t -> (h1, h)::(aux h1 t)
     in List.append (aux h l2) (lprod t l2);;
    (************************************************************)
-let rec divide = function
-  h1::h2::t -> let  l1, l2 = divide t
-    in h1::l1,h2::l2
-  | l -> l, [];;
+   let rec divid l (l1,l2)= match l with
+   h1::h2::t-> divid t ((h1::l1),(h2::l2))
+   | l-> (List.rev (List.rev_append (List.rev l) l1)), List.rev(l2)
+let divide l= divid l ([],[]);;
