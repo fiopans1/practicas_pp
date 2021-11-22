@@ -71,7 +71,8 @@ let split l= spl l [] [];;
 (**************************************************************)
 let rec combi l1 l2 l3= match l1,l2 with
   [],[]->l3
-  | h::t,h1::t1-> combi t t1 (append l3 [(h,h1)]);;
+  | h::t,h1::t1-> combi t t1 (append l3 [(h,h1)])
+  | _->raise(Failure "caso imposible");;
 let combine l1 l2= 
   if((length l1)=(length l2)) then (combi l1 l2 []) else raise(Failure "combine");;
 (**************************************************************)
@@ -92,7 +93,7 @@ let rec conca l1 l2= match l1 with
 
 let concat l= conca l [];;
 (**************************************************************)
-let flatten= concat l;;
+let flatten l= concat l;;
 (**************************************************************)
 let rec ma f l l1= match l with
   []->l1
@@ -103,7 +104,8 @@ let rev_map f l= map f (rev l);;
 (**************************************************************)
 let rec ma1 f l1 l2 l3= match l1,l2 with
   [],[]->l3
-  | h::t,h1::t1-> ma1 f t t1 (append  l3 [(f h h1)]);;
+  | h::t,h1::t1-> ma1 f t t1 (append  l3 [(f h h1)])
+  | _->raise(Failure "caso imposible");;
 let map2 f l1 l2=
   if((length l1)= (length l2)) then (ma1 f l1 l2 []) else  raise(Failure "map2");;
 (**************************************************************)

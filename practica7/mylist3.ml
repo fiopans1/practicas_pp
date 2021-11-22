@@ -13,9 +13,8 @@ let rec remove n l= match l with
   let ldif l1 l2= ldif1 l1 l2 l1;;
     (************************************************************)
     let rec lprod l1 l2 = match l1 with
-  [] -> []
-  | h::t ->
-    let rec aux h1 l2 = match l2 with
+    [] -> []
+    | h::t ->let rec aux h1 l2 = match l2 with
       [] -> []
       | h::t -> (h1, h)::(aux h1 t)
     in List.append (aux h l2) (lprod t l2);;
@@ -23,4 +22,4 @@ let rec remove n l= match l with
    let rec divid l (l1,l2)= match l with
    h1::h2::t-> divid t ((h1::l1),(h2::l2))
    | l-> (List.rev (List.rev_append (List.rev l) l1)), List.rev(l2)
-let divide l= divid l ([],[]);;
+  let divide l= divid l ([],[]);;
