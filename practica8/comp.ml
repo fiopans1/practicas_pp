@@ -1,3 +1,4 @@
+(*DIEGO SUAREZ RAMOS- diego.suarez.ramos@udc.es*)
 (*comp : (’a -> ’b) -> (’c -> ’a) -> (’c -> ’b)*)
 
 let comp f1 f2= function a-> (f1(f2 a));;

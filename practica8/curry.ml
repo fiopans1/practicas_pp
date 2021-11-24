@@ -1,3 +1,4 @@
+(*DIEGO SUAREZ RAMOS- diego.suarez.ramos@udc.es*)
 (*curry : ((’a * ’b) -> ’c) -> (’a -> (’b -> ’c))*)
 let curry f=fun a b-> (f (a,b));;
 

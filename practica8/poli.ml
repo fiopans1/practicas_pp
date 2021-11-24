@@ -1,3 +1,4 @@
+(*DIEGO SUAREZ RAMOS- diego.suarez.ramos@udc.es*)
 let f= function a->a;;
 (*Podemos tener una única función que es la función identidad*)
 let h= function a,b-> a;;
