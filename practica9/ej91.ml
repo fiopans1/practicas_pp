@@ -48,8 +48,14 @@ let power x y =
   else invalid_arg "power";;
   (**************************************************** *)
   let incseg l =
-    List.fold_right (fun x t -> x::List.map ((+) x) t) l [];;
-  (*TERMINAR Y HACER TERMINAL *)
+    (*List.fold_right (fun x t -> x::List.map ((+) x) t) l [];;*)
+
+    let incseg l = 
+      let rec aux l acc l2 = match l with
+        [] -> []
+        | [h] -> List.rev ((h + acc)::l2)
+        | h::t -> aux t (h + acc) ((h + acc)::l2)
+      in aux l 0 [];;
   (**************************************************** *)
 (*let rec remove x = function
 [] -> []
@@ -79,3 +85,4 @@ let rec compr l l1=match l with
     else compr (h2::t) (h1::l1)
   | l-> (List.rev (List.rev_append (List.rev l) l1));;
 let compress l= compr l [];;
+

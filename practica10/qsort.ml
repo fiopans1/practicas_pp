@@ -36,22 +36,23 @@ let rec qsort2 ord =
 intentar mantener la recursivad terminal, la razón es simplemente por la unión de las listas,
 mientras que qsort1 usa el @ que no es recursivo terminal pero si que es bastante eficiente, mientras
 que qsort2 si que es recursiva terminal, pero es mas lenta que usar directamente el @ porque usamos
-List.rev_append (List.rev l1) l2 ,por ejemplo con una lista random de 200000 elementos
+List.rev_append (List.rev l1) l2 ,por ejemplo con una lista random de 600000 elementos
 vamos *)
 (*Para qsort1*)
 let f n= function x->x>n;;
 let t1=Sys.time();;
-let l2=qsort1 f (randomlist 200000);;
+let l2=qsort1 f (randomlist 600000);;
 let t2=Sys.time();;
 let tiempo1=t2-.t1;;
 (*Para qsort2 *)
 let f n= function x->x>n;;
 let t1=Sys.time();;
-let l2=qsort2 f (randomlist 200000);;
+let l2=qsort2 f (randomlist 600000);;
 let t2=Sys.time();;
 let tiempo2=t2-.t1;;
-(*# val tiempo1 : float = 0.636856999999999562 *)
-(*# val tiempo2 : float = 0.722103999999999857*)
+(*# val tiempo1 : float = 1.0140699999999998 *)
+(*# val tiempo2 : float = 2.63514*)
+(*Como obsevamos en este caso quicksort 2 fue mas de doble de lento(concretamente un 259,86 %)*)
 
 
 
