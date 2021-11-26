@@ -25,7 +25,7 @@ let top n=
 
 let rec lyt n z y=
 	let x= f n in
-		if(x=1) then (z,(y+1)) else (if x>z then (lyt x x (y+1)) else (lyt x z (y+1)  ));;
+		if(x=1) then ((y+1),z) else (if x>z then (lyt x x (y+1)) else (lyt x z (y+1)  ));;
 let length'n'top z=
 	if(z>0) then (lyt z 0 0) else 0,0;;
 
