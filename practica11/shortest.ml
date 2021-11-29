@@ -19,3 +19,15 @@ let rec shortest_tour m n (i,j) (x,y)=
       with Not_found->aux l t
     in if (limit m n (i,j)) then (aux [] [i,j])
     else raise(Not_found);;
+
+    (*let rec shortest_tour m n (i,j) (x,y)=
+  if(not(limit m n (i,j)) || not(limit m n (x,y))) then
+      raise(Invalid_argument "tour") else
+      let rec aux l= function
+      []->raise(Not_found)
+      | h::t-> if(h=(x,y))
+        then List.rev(h::l) @ (aux l t)
+        else try aux (h::l) (movimientolegal m n h (h::l)) @ (aux l t)
+      with Not_found->aux l t
+    in if (limit m n (i,j)) then (aux [] [i,j])
+    else raise(Not_found);;*)
