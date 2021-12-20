@@ -4,10 +4,13 @@ let rec size = function
     Gt (_,[]) -> 1
   | Gt (r,h::t) -> size h + size (Gt (r,t));;
 
-(*TERMINAR*)
-let rec height= function
-  Gt (_,[])-> 1
-  | Gt (r,h::t)->1+ max (height h) (height (Gt (r,t)));;
+  let rec height =
+    function
+    | Gt (_, []) -> 1
+    | Gt (_, _::t) -> 2+ List.fold_left max 0 (List.map height t);;
+    (*en esta funcion el fold_left lo que hace es sumar todos los valores
+    de una lista, y le pasas como variable la lista de alturas(la lista de nodos
+    calculandole la altura*)
 
 let rec mirror= function
   Gt(r,[])->Gt(r,[])
@@ -21,3 +24,11 @@ let rec preorden=function
 let rec postorden=function
   Gt(r,[])->[r]
   | Gt(r,h::t)->[r]@ (List.fold_left postorden t);;
+
+
+  let rec height =
+    function
+    | Gt (_, []) -> 1
+    | Gt (_, _::t) -> 2+ List.fold_left max 0 (List.map height t);;
+
+      

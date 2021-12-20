@@ -1,3 +1,5 @@
+https://learntutorials.net/es/ocaml/topic/2730/procesamiento-de-listas
+
 (*DIEGO SUAREZ RAMOS- diego.suarez.ramos@udc.es*)
 ();;
 (*unit = ()*)
