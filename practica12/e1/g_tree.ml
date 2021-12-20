@@ -23,12 +23,8 @@ let rec preorden=function
 (*TERMINAR*)
 let rec postorden=function
   Gt(r,[])->[r]
-  | Gt(r,h::t)->[r]@ (List.fold_left postorden t);;
+  | Gt(r,h::t)-> (postorden h)  @ (postorden (Gt (r,t)));;
 
 
-  let rec height =
-    function
-    | Gt (_, []) -> 1
-    | Gt (_, _::t) -> 2+ List.fold_left max 0 (List.map height t);;
 
       
