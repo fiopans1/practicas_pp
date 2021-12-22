@@ -1,48 +1,4 @@
-let rec divide = function
-  [] -> [], []
-  | h::[] -> [h], []
-  | h1::h2::t -> let t1, t2 = divide t in (h1::t1, h2::t2);;
 
-let rec merge ord = function
-  [], l | l, [] -> l
-  | h1::t1, h2::t2 -> if (ord h1) h2 then h1 :: merge ord (t1, h2::t2)
-                      else h2 :: merge ord (h1::t1, t2);;
-
-let rec msort1 ord l = match l with
-  [] | _::[] -> l
-  | _ -> let l1, l2 = divide l in
-        merge ord (msort1 ord l1, msort1 ord l2);;
-
-
-
-
-
-let rec merge ord v izq der cent=
-  let i= (ref izq) in let j= (ref (cent+1)) in  k=(ref izq) in let aux=(Array.make (der+1) 0) in
-while i<= cent && j<= der do (
-    if (ord v.((!i)) v.((!j))) then (aux.((!k)) <- v.((!i)) ; i := (!i + 1))
-    else aux.((!k)) <- v.((!j)) ; j = (!j + 1) ; k := (!k +1))
-done ;
-while !i <= cent do
-  aux.((!k)) <- v.((!i)) ; i := (!i +1) ; k := (!k +1)
-
-
-
-let rec merge ord v izq der cent=
-  let i= (ref izq) in let j= (ref (cent+1)) in let k=(ref izq) in let aux=(Array.make(der+1) v.(0)) in
-while !i<= cent && !j<= der do (
-    if (ord v.((!i)) v.((!j))) then (aux.((!k)) <- v.((!i)) ; i := (!i + 1))
-    else aux.((!k)) <- v.((!j)) ; j := (!j + 1) ; k := (!k +1))
-done ;
-while !i <= cent do
-  aux.((!k)) <- v.((!i)) ; i := (!i + 1) ; k := (!k +1)
-done ;
-while !i <= der do
-  aux.((!k)) <- v.((!j)) ; j := (!j + 1) ; k := (!k +1)
-done ;
-for z = izq to der do
-  v.(z) <- aux.(z)
-done ;;
 
 
 
@@ -108,5 +64,5 @@ let rec mergesort ord v izq der=
 let asort ord v=
   mergesort ord v 0 ((Array.length v) -1);;
 
-let pene= [| 5;2;3;5;67;3;4;56;7;4;9;3;6;8;1;6|];;
+let v= [| 5;2;3;5;67;3;4;56;7;4;9;3;6;8;1;6|];;
 let f =  fun x y -> x<y;;
