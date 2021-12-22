@@ -8,13 +8,13 @@ let rec fold_tree f a = function
 
 (* Implemente sum, prod, size, inorder y mirror usando fold_tree *)
 
-let sum = ... ;;
+let sum t = fold_tree (fun x y z -> x + y + z ) 0 t ;;
 
-let prod = ... ;;
+let prod t = fold_tree (fun x y z -> x *. y *. z ) 1.0 t ;;
 
-let size = ... ;;
+let size t = fold_tree (fun x y z-> 1 + y + z) 0 t ;;
 
-let inorder = ...;;
+let inorder t = fold_tree (fun x y z -> y@x::z ) [] t;;
 
-let mirror = ... ;;
+let mirror t = fold_tree (fun x y z -> Node(x,z,y)) Empty t ;;
 
