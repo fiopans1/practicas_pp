@@ -18,9 +18,8 @@ let rec mirror= function
 
 let rec preorden=function
   Gt(r,[])->[r]
-  | Gt(r,(Gt(h,t1))::t)->[r]@ (preorden (Gt (h,(t1@t))));;
+  | Gt(r,(Gt(h,t1))::t)->r :: (preorden (Gt (h,(t1@t))));;
 
-(*TERMINAR*)
 let rec postorden=function
   Gt(r,[])->[r]
   | Gt(r,h::t)-> (postorden h)  @ (postorden (Gt (r,t)));;
