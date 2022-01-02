@@ -79,3 +79,23 @@ let tiempo3=t2-.t1;;
 (*val tiempo1 : float = 0.0239830000000011978
 val tiempo2 : float = 0.0167049999999999699
 val tiempo3 : float = 0.0177009999999988565*)
+
+
+(*La lista l2 es:*)
+
+let fromto m n =
+  let rec auxl m n l =
+    if n < m
+      then l
+      else auxl m (n - 1) (n::l)
+  in auxl m n [];;
+
+let l2 = fromto 1 256000;;
+let fromto m n =
+  let rec auxl m n l =
+    if n < m
+      then l
+      else auxl m (n - 1) (n::l)
+  in auxl m n [];;
+
+let l2 = fromto 1 256000;;

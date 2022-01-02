@@ -1,3 +1,5 @@
+open G_tree;;
+
 let rec breadth_first = function
 Gt (x, []) -> [x]
 | Gt (x, (Gt (y, t2))::t1) -> x :: breadth_first (Gt (y, t1@t2));;
@@ -8,4 +10,9 @@ Gt (x, []) -> (List.rev_append (List.rev l) [x])
 
 let breadth_first_t t= breadth_first' [] t;;
 
-(*BUSCAR EJEMPLO*)
+let rec init = function i -> function f ->
+  let rec init_aux = (function (l, n, m) ->
+    if n > m then init_aux ((f m)::l, n, m + 1) else l)
+  in init_aux ([], i, 0);;
+
+let t = Gt(0, init 1_000_000 (fun x -> Gt(x, [])));;

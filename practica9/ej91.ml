@@ -13,7 +13,7 @@ let to0from n= to0fr n [];;
   if m > n then []
   else m :: fromto (m+1) n;;*)
 let rec fromt m n l1=
-  if m>n then LIst.rev(l1)
+  if m>n then List.rev(l1)
   else fromt (m+1) n (m::l1);;
 let fromto m n= fromt m n [];;
 (**************************************************** *)
@@ -28,7 +28,7 @@ let from1to n= from1 n [];;
 (*let map =
   List.map;; *)
 let rec ma f l l1= match l with
-  []->rev(l1)
+  []->List.rev(l1)
   | h::t -> ma f t ((f h)::l1);;
 let map f l= ma f l [];;
 (**************************************************** *)
@@ -47,8 +47,8 @@ let power x y =
   if y >= 0 then innerpower x y 1
   else invalid_arg "power";;
   (**************************************************** *)
-  let incseg l =
-    (*List.fold_right (fun x t -> x::List.map ((+) x) t) l [];;*)
+  (*let incseg l =
+   List.fold_right (fun x t -> x::List.map ((+) x) t) l [];;*)
 
     let incseg l = 
       let rec aux l acc l2 = match l with

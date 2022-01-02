@@ -16,14 +16,17 @@ let rec mirror= function
   Gt(r,[])->Gt(r,[])
   | Gt(r,t)->Gt(r,(List.rev (List.map mirror t)));;
 
-let rec preorden=function
+let rec preorder=function
   Gt(r,[])->[r]
-  | Gt(r,(Gt(h,t1))::t)->r :: (preorden (Gt (h,(t1@t))));;
+  | Gt(r,(Gt(h,t1))::t)->r :: (preorder (Gt (h,(t1@t))));;
 
-let rec postorden=function
+let rec postorder=function
   Gt(r,[])->[r]
-  | Gt(r,h::t)-> (postorden h)  @ (postorden (Gt (r,t)));;
+  | Gt(r,h::t)-> (postorder h)  @ (postorder (Gt (r,t)));;
+  
+let rec leaves= function
+    Gt(r,[])->[r]
+   | Gt(r,h::[])->(leaves h)
+   | Gt (r,h::t)->(leaves h)@ (leaves (Gt(r,t)));;
 
 
-
-      
