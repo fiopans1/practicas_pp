@@ -57,7 +57,7 @@ let rec mergesort ord v izq der=
   while izq<der && izq < !cent do
     mergesort ord v izq ((izq+der)/2);
     mergesort ord v ((izq+der)/2 +1) der;
-    merge ord v izq (der - 9) ((izq+der)/2);
+    merge ord v izq der ((izq+der)/2);
     cent := (!cent + izq)/2
   done;;
 

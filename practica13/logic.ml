@@ -60,7 +60,35 @@ let rec peval ctx = function
   | BiOp (If,e1,e2)->biopval If (peval ctx e1) (peval ctx e2)
   | BiOp (Iff,e1,e2)->biopval Iff (peval ctx e1) (peval ctx e2);;
 
-(*TERMINAR*)
-let rec is_tau p= if (peval [] p) then true else false;; 
-
+  (*EJERCICIO3*)
+  let tabla_verdad variables=
+  let rec aux lista_tuplas vars =
+  match vars with
+  [] -> [(List.rev lista_tuplas)]
+  | h::t -> (aux ((h,true)::lista_tuplas) t) @ (aux ((h,false)::lista_tuplas) t)
+  in aux [] variables;;
+  
+  let rec unir_sin_duplicar l1 l2=
+  match l1 with
+  [] -> l2
+  | h::t -> if List.mem h l2 then unir_sin_duplicar t l2
+  else unir_sin_duplicar t (h::l2);;
+  
+  let lista_variables p=
+  let rec aux lista prop=
+  match prop with
+  C x -> lista
+  | V x -> if (List.mem x lista) then lista else x::lista
+  | Op (_,a) -> aux lista a
+  | BiOp (_,a,b) -> unir_sin_duplicar (aux lista a) (aux lista b)
+  in aux [] p;;
+  
+  let is_tau prop=
+  let variables=lista_variables prop in
+  let tabla=tabla_verdad variables in
+  let rec aux lista tau=
+  match lista with
+  [] -> tau
+  | h::t -> aux t (tau && (peval h prop))
+  in aux tabla true;;
 (*Tenemos que crear la combinacion de todos los posibles valores  *)
