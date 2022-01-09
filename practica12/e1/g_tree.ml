@@ -7,7 +7,7 @@ let rec size = function
   let rec height =
     function
     | Gt (_, []) -> 1
-    | Gt (_, _::t) -> 2+ List.fold_left max 0 (List.map height t);;
+    | Gt(_,l)-> 1+List.fold_left max 0 (List.map altura l);;
     (*en esta funcion el fold_left lo que hace es sumar todos los valores
     de una lista, y le pasas como variable la lista de alturas(la lista de nodos
     calculandole la altura*)
